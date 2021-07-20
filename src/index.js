@@ -1,35 +1,16 @@
 import _ from 'lodash';
-import './style.css';
-import Icon from './icon.png';
-import Data from './data.xml';
-import Notes from './data.csv';
-import toml from './data.toml';
-import yaml from './data.yaml';
-import json from './data.json5';
-
-console.log(toml.title);
-console.log(toml.owner.name);
-
-console.log(yaml.title);
-console.log(yaml.owner.name);
-
-console.log(json.title);
-console.log(json.owner.name);
+import printMe from './print.js';
 
 function component() {
     const element = document.createElement('div');
+    const btn = document.createElement('button');
 
     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('hello');
 
-    // 将图像添加到我们已经存在的 div 中。
-    const myIcon = new Image();
-    myIcon.src = Icon;
+    btn.innerHTML = 'Click me and check the console';
+    btn.onclick = printMe;
 
-    element.appendChild(myIcon);
-
-    console.log(Data);
-    console.log(Notes);
+    element.appendChild(btn);
 
     return element;
 }
