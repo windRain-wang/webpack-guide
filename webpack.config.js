@@ -1,13 +1,23 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-    mode: 'development',
-    entry: {
-        index: './src/index.js',
-        another: './src/another-module.js',
+  mode: "development",
+  entry: {
+    index: {
+      import: "./src/index.js",
+      dependOn: "shared",
     },
-    output: {
-        filename: '[name].bundle.js',
-        path: path.join(__dirname, 'dist'),
-    }
-}
+    another: {
+      import: "./src/another-module.js",
+      dependOn: "shared",
+    },
+    shared: "lodash",
+  },
+  output: {
+    filename: "[name].bundle.js",
+    path: path.join(__dirname, "dist"),
+  },
+  optimization: {
+    runtimeChunk: "single",
+  },
+};
