@@ -4,12 +4,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    index: "./src/index.js",
-    print: "./src/print.js",
+    index: "./src/index.js"
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -22,4 +22,12 @@ module.exports = {
     clean: true,
     publicPath: '/'
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 };
