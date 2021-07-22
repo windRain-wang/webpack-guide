@@ -5,5 +5,10 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.join(__dirname, 'dist'),
-    }
+    },
+    mode: 'development',
+    optimization: {
+        usedExports: true
+    },
+    devtool: 'inline-source-map'
 }
