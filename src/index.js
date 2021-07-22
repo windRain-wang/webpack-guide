@@ -8,3 +8,4 @@ async function getComponent() {
 getComponent().then((component) => {
   document.body.appendChild(component);
 });
+console.log('process.env.ASSET_PATH', process.env.ASSET_PATH);

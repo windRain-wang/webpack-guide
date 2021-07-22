@@ -1,12 +1,17 @@
-const path = require("path");
+const webpack = require('webpack');
+
+// 尝试使用环境变量，否则使用根路径
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
-  mode: "development",
-  entry: {
-    index: "./src/index.js"
-  },
   output: {
-    filename: "[name].bundle.js",
-    path: path.join(__dirname, "dist")
-  }
+    publicPath: ASSET_PATH,
+  },
+
+  plugins: [
+    // 这可以帮助我们在代码中安全地使用环境变量
+    new webpack.DefinePlugin({
+      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
+    }),
+  ],
 };
